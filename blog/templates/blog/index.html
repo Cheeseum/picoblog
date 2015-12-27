@@ -1,9 +1,12 @@
-{% if latest_posts_list %}
-    <ul>
-        {% for post in latest_posts_list %}
-        <li><a href="{% url 'blog:post' post.id %}">{{ post.title }}</a></li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>No posts available.</p>
-{% endif %}
+{% extends "blog/base.html" %}
+{% block content %}
+    {% if latest_posts_list %}
+        <ul>
+            {% for post in latest_posts_list %}
+                <li><a href="{% url 'blog:post' post.id %}">{{ post.title }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No posts available.</p>
+    {% endif %}
+{% endblock %}

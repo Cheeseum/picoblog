@@ -1,0 +1,66 @@
+$bg-color: #dfdfdf;
+$bg-content-color: #ffffff;
+$bg-header-color: #8d5301;
+$main-color: #da9330;
+$accent-color: #363398;
+$hilight-color: #62bb99;
+
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+
+    background: $bg-color;
+    font-family: sans-serif;
+
+    >header {
+        background: $main-color;
+        text-align: center;
+        padding: 5px;
+        
+        color: lighten($main-color, 35);
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            &:hover { color: white }
+            &:active{ color: #ddd }
+            &:visited { color: inherit }
+        }
+
+        h1 { font-size: 3em; }
+        p { font-size: 1em; }
+
+    }
+}
+
+main {
+    padding: 20px 5px 25px 25px;
+    margin: 0 auto;
+    width: 1200px;
+
+    background: $bg-content-color;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+a {
+    color: $accent-color;
+    &:hover { color: darken($accent-color, 20); }
+    &:active { color: darken($accent-color, 15); }
+    &:visited { color: darken($accent-color, 40); }
+}
+
+article {
+    h1 { font-size: 2.2em; }
+    h2 { font-size: 1.3em; }
+    h3 { font-size: 0.5em; }
+
+    header {
+        margin-bottom: 2em;
+        p { font-weight: bold; font-style: italic; }
+    }
+}

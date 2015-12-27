@@ -1,0 +1,26 @@
+{% load staticfiles %}
+{% load compress %}
+
+<!doctype html>
+<head>
+    <title>{% block title %}picoblog{% endblock %}</title>
+    {% compress css %}
+        <link rel="stylesheet" type="text/scss" href="{% static 'blog/style.scss'%}" />
+    {% endcompress %}
+</head>
+<body>
+    <header>
+        <a rel="home" href="/blog">
+            <h1>BLOG</h1>
+            <p>subtitle goes here</p>
+        </a>
+    </header>
+    
+    <nav>
+        {% block nav %}{% endblock %}
+    </nav>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
