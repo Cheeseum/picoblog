@@ -7,22 +7,23 @@ https://docs.djangoproject.com/en/1.7/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.7/ref/settings/
 """
+import os
+from django.utils.crypto import get_random_string
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-
+SITE_DIR = os.path.dirname(BASE_DIR)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 't=*s&*f&-6)d)-3^$s(1!io#mvrt#hi74z@t$xtq3v9@*6!u3p'
+SECRET_FILE = os.path.join(SITE_DIR, 'deploy', 'SECRET')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -36,7 +37,6 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'compressor',
     'blog',
 )
 
@@ -61,7 +61,7 @@ WSGI_APPLICATION = 'picoblog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(SITE_DIR, 'deploy', 'db.sqlite3'),
     }
 }
 
@@ -83,15 +83,23 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'deploy', 'static')
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'compressor.finders.CompressorFinder',
 )
 
-# compressor settings
-COMPRESS_PRECOMPILERS = (
-    ('text/scss', 'sass --scss {infile} {outfile}'),
-)
+def gen_secret_key(i):
+    return get_random_string(i, 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)')
+
+# generate a secret key on first load of this file
+try:
+    SECRET_KEY = open(SECRET_FILE).read().strip()
+except IOError:
+    try:
+        with open(SECRET_FILE, 'w') as f:
+            f.write(gen_secret_key(50))
+    except IOError:
+        raise Exception('Cannot open file `%s` for writing.' % SECRET_FILE)
+
