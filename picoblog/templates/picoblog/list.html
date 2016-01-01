@@ -1,9 +1,9 @@
-{% extends "blog/base.html" %}
+{% extends "picoblog/base.html" %}
 {% block content %}
     {% if latest_posts_list %}
         <ul>
             {% for post in latest_posts_list %}
-                <li><a href="{% url 'blog:post' post.id %}">{{ post.title }}</a> - {{post.author}} at <time>{{post.date}}</time></li>
+                <li><a href="{% url 'picoblog:post' post.id %}">{{ post.title }}</a> - {{post.author}} at <time>{{post.date}}</time></li>
             {% endfor %}
         </ul>
     {% else %}
