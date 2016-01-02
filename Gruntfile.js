@@ -134,7 +134,7 @@ module.exports = function(grunt) {
 
   // Default task.
   grunt.registerTask('build', ['jshint', 'sass']);
-  grunt.registerTask('dist', ['remove:dist', 'build', 'concat', 'uglify', 'cssmin', 'processhtml', 'copy:dist']);
+  grunt.registerTask('dist', ['remove:dist', 'build', 'concat', 'cssmin', 'processhtml', 'copy:dist']);
   grunt.registerTask('publish', ['dist']);
   grunt.registerTask('default', ['watch']);
 };
