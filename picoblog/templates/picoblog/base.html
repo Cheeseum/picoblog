@@ -4,9 +4,10 @@
 <!doctype html>
 <head>
     <title>{% block title %}picoblog{% endblock %}</title>
-    {% compress css %}
-        <link rel="stylesheet" type="text/scss" href="{% static 'picoblog/style.scss'%}" />
-    {% endcompress %}
+
+    <!-- build:css css/style.min.css -->
+        <link rel="stylesheet" type="text/scss" href="{% static 'picoblog/css/style.scss'%}" />
+    <!-- /build -->
 </head>
 <body>
     <header>

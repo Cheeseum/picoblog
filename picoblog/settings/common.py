@@ -38,7 +38,6 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'picoblog',
-    'compressor'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -89,13 +88,8 @@ STATIC_ROOT = os.path.join(SITE_DIR, 'deploy', 'static')
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'compressor.finders.CompressorFinder',
 )
 
-# compressor settings
-COMPRESS_PRECOMPILERS = (
-    ('text/scss', 'sass --scss {infile} {outfile}'),
-)
 def gen_secret_key(i):
     return get_random_string(i, 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)')
 
