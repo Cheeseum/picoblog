@@ -19,7 +19,7 @@ module.exports = function(grunt) {
     copy: {
         dist: {
             files: [{
-                src : ['<%= pkg.name %>/**/*.py'],
+                src : ['<%= pkg.name %>/**/*.py', 'manage.py'],
                 dest: 'dist/'
             }]
         }
