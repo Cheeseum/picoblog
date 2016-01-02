@@ -4,8 +4,10 @@
 <head>
     <title>{% block title %}picoblog{% endblock %}</title>
 
-    <!-- build:css /static/picoblog/css/style.min.css -->
-        <link rel="stylesheet" type="text/css" href="{% static 'picoblog/css/style.css'%}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'picoblog/css/style.min.css' %}" />
+
+    <!-- build:remove -->
+    <link rel="stylesheet" type="text/css" href="{% static 'picoblog/css/style.css' %}" />
     <!-- /build -->
 </head>
 <body>
