@@ -1,12 +1,11 @@
 {% load staticfiles %}
-{% load compress %}
 
 <!doctype html>
 <head>
     <title>{% block title %}picoblog{% endblock %}</title>
 
-    <!-- build:css static/picoblog/css/style.min.css -->
-        <link rel="stylesheet" type="text/scss" href="{% static 'picoblog/css/style.scss'%}" />
+    <!-- build:css /static/picoblog/css/style.min.css -->
+        <link rel="stylesheet" type="text/css" href="{% static 'picoblog/css/style.css'%}" />
     <!-- /build -->
 </head>
 <body>
