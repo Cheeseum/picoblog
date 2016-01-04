@@ -2,7 +2,7 @@
 
 <!doctype html>
 <head>
-    <title>{% block title %}picoblog{% endblock %}</title>
+    <title>{% block title %}{{site.title}} @ picoblog{% endblock %}</title>
 
     <link rel="stylesheet" type="text/css" href="{% static 'picoblog/css/style.min.css' %}" />
 
@@ -13,8 +13,8 @@
 <body>
     <header>
         <a rel="home" href="/">
-            <h1>BLOG</h1>
-            <p>subtitle goes here</p>
+            <h1>{{ site.title }}</h1>
+            <p>{{ site.subtitle }}</p>
         </a>
     </header>
     

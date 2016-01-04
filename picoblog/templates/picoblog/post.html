@@ -1,4 +1,6 @@
 {% extends "picoblog/base.html" %}
+{% block title %}{{ post.title }} | {{ block.super }}{% endblock %}
+
 {% block content %}
     <article>
         <header>
