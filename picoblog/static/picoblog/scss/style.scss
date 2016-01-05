@@ -71,8 +71,12 @@ article {
     }
 
     >p {
-        //text-indent: 5em;
+        text-indent: 1.2em;
         line-height: 1.5;
+    }
+
+    >p:only-of-type {
+        text-indent: 0;
     }
 }
 

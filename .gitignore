@@ -2,3 +2,4 @@
 .*.swo
 *.pyc
 db.sqlite3
+style.css

@@ -8,6 +8,6 @@
             <p>{{ post.author }} at <time>{{post.date}}</time></p>
         </header>
 
-        <p>{{post.content}}</p>
+        {{ post.content|linebreaks }}
     </article>
 {% endblock content %}
